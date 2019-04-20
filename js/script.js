@@ -5,6 +5,7 @@ let ElementJaune=document.getElementById("yellow");
 let TabCoulBase=["red","green","blue","yellow"];
 let TabCoulFonce=["#700a0a","#154707","#1916a3","#757322"];
 let TabElemt=[ElementRouge,ElementVert,ElementBleu,ElementJaune];
+let tpsSupplementairePourIncrementation=0;
 
 /*DONNEES POUR LE CLIC*/
 let variableDuClic=5;
@@ -62,12 +63,12 @@ function attribueCaractereAleatoire(){
 	}
 }
 
-function mecanismeAleatoire(){
+function mecanismeAleatoire(tpsSupplementaire){
 	TabElemt[var4Aleatoire].style.backgroundColor = TabCoulFonce[var4Aleatoire];
 		setTimeout(
 			function() {
 				TabElemt[var4Aleatoire].style.backgroundColor = TabCoulBase[var4Aleatoire];
-						},1000 
+						},1000 + (2000 * tpsSupplementaire)
 			);
 };
 
@@ -88,38 +89,54 @@ console.log(memoireClickAleatoire);
 
 */
 
+// SEQUENCE DE JEU : GO :
+
+
+
+alert("tu joue");
+
+while(memoireClickAleatoire===memoireClick){
 /*Ecouteur JE JOUE*/
-	TabElemt[0].addEventListener("click", function(e){
-		variableDuClic=0;
-		CoulAppliquee(variableDuClic);
-		attribueCaractere(variableDuClic);
-	}
-		)
-
-	TabElemt[1].addEventListener("click", function(e){
-		variableDuClic=1;
-		CoulAppliquee(variableDuClic);
-		attribueCaractere(variableDuClic);
-	}
-		)
-
-	TabElemt[2].addEventListener("click", function(e){
-		variableDuClic=2;
-		CoulAppliquee(variableDuClic);
-		attribueCaractere(variableDuClic);
-	}
-		)
-
-	TabElemt[3].addEventListener("click", function(e){
-		variableDuClic=3;
-		CoulAppliquee(variableDuClic);
-		attribueCaractere(variableDuClic);
-	}
-		);
 
 
+// AU TOUR DE L'ORDI :
 
+		mecanismeAleatoire(tpsSupplementairePourIncrementation);
 
+		attribueCaractereAleatoire();
+
+		TabElemt[0].addEventListener("click", function(e){
+			variableDuClic=0;
+			CoulAppliquee(variableDuClic);
+			attribueCaractere(variableDuClic);
+		}
+			)
+	
+		TabElemt[1].addEventListener("click", function(e){
+			variableDuClic=1;
+			CoulAppliquee(variableDuClic);
+			attribueCaractere(variableDuClic);
+		}
+			)
+	
+		TabElemt[2].addEventListener("click", function(e){
+			variableDuClic=2;
+			CoulAppliquee(variableDuClic);
+			attribueCaractere(variableDuClic);
+		}
+			)
+	
+		TabElemt[3].addEventListener("click", function(e){
+			variableDuClic=3;
+			CoulAppliquee(variableDuClic);
+			attribueCaractere(variableDuClic);
+		}
+			);
+		tpsSupplementairePourIncrementation++;
+}
+
+console.log(tpsSupplementairePourIncrementation);
+console.log(memoireClickAleatoire);
 console.log(memoireClick);
 console.log(variableDuClic);
 
